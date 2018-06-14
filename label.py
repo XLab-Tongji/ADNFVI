@@ -87,6 +87,7 @@ def match_rule(record, rule):
         if int(timestamp) > int(r[0]) and int(timestamp) <= int(r[0]) + int(r[1]):
             record += transfer_fl(r[2])
             find = True
+            break
     if not find:
         record += transfer_fl(None)
         
@@ -104,7 +105,7 @@ def auto_label_faultload():
         label_list = ['normal', 'cpu', 'mem', 'io']
         sum_com_data = [const_items[1:] + label_list]
         sum_com_data += data_label
-        write_to_csv('%s/faultlaod-%s.csv' % (data_dir, component), sum_com_data)
+        write_to_csv('%s/faultload-%s.csv' % (data_dir, component), sum_com_data)
 
 def read_sla(sla_file):
     info_list = []
@@ -137,6 +138,7 @@ def match_sla(record, sla_list):
         if int(record[0]) > int(sla[0]) and int(record[0]) < int(sla[0]) + 60:
             record += transfer_sl(sla[1])
             find = True
+            break
     if not find:
         record += transfer_sl(None)
     return record
