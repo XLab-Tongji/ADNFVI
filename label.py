@@ -7,6 +7,7 @@ import csv
 # items
 const_items = [u'host', u'clock', u'net.if.in[ens160]', u'net.if.out[ens160]', u'proc.num[,,run]', u'proc.num[]', u'system.cpu.intr', u'system.cpu.load[percpu,avg1]', u'system.cpu.load[percpu,avg15]', u'system.cpu.load[percpu,avg5]', u'system.cpu.switches', u'system.cpu.util[,idle]', u'system.cpu.util[,interrupt]', u'system.cpu.util[,iowait]', u'system.cpu.util[,nice]', u'system.cpu.util[,softirq]', u'system.cpu.util[,steal]', u'system.cpu.util[,system]',u'system.cpu.util[,user]', u'system.swap.size[,free]', u'system.swap.size[,pfree]', u'system.swap.size[,total]', u'vfs.fs.inode[/,pfree]', u'vfs.fs.inode[/boot,pfree]', u'vfs.fs.inode[/var/lib/docker/aufs,pfree]', u'vfs.fs.inode[/var/lib/kubelet,pfree]', u'vfs.fs.inode[/var/lib/rancher/volumes,pfree]', u'vfs.fs.size[/,pfree]', u'vfs.fs.size[/,total]', u'vfs.fs.size[/,used]', u'vfs.fs.size[/boot,free]', u'vfs.fs.size[/boot,pfree]', u'vfs.fs.size[/boot,total]', u'vfs.fs.size[/boot,used]', u'vfs.fs.size[/var/lib/docker/aufs,pfree]', u'vfs.fs.size[/var/lib/docker/aufs,total]', u'vfs.fs.size[/var/lib/docker/aufs,used]', u'vfs.fs.size[/var/lib/kubelet,free]', u'vfs.fs.size[/var/lib/kubelet,pfree]', u'vfs.fs.size[/var/lib/kubelet,total]', u'vfs.fs.size[/var/lib/kubelet,used]', u'vfs.fs.size[/var/lib/rancher/volumes,free]', u'vfs.fs.size[/var/lib/rancher/volumes,pfree]', u'vfs.fs.size[/var/lib/rancher/volumes,total]', u'vfs.fs.size[/var/lib/rancher/volumes,used]', u'vm.memory.size[available]', u'vm.memory.size[total]']
 const_imtes_combine = [u'clock', u'bono_net.if.in[ens160]', u'bono_net.if.out[ens160]', u'bono_proc.num[,,run]', u'bono_proc.num[]', u'bono_system.cpu.intr', u'bono_system.cpu.load[percpu,avg1]', u'bono_system.cpu.load[percpu,avg15]', u'bono_system.cpu.load[percpu,avg5]', u'bono_system.cpu.switches', u'bono_system.cpu.util[,idle]', u'bono_system.cpu.util[,interrupt]', u'bono_system.cpu.util[,iowait]', u'bono_system.cpu.util[,nice]', u'bono_system.cpu.util[,softirq]', u'bono_system.cpu.util[,steal]', u'bono_system.cpu.util[,system]', u'bono_system.cpu.util[,user]', u'bono_system.swap.size[,free]', u'bono_system.swap.size[,pfree]', u'bono_system.swap.size[,total]', u'bono_vfs.fs.inode[/,pfree]', u'bono_vfs.fs.inode[/boot,pfree]', u'bono_vfs.fs.inode[/var/lib/docker/aufs,pfree]', u'bono_vfs.fs.inode[/var/lib/kubelet,pfree]', u'bono_vfs.fs.inode[/var/lib/rancher/volumes,pfree]', u'bono_vfs.fs.size[/,pfree]', u'bono_vfs.fs.size[/,total]', u'bono_vfs.fs.size[/,used]', u'bono_vfs.fs.size[/boot,free]', u'bono_vfs.fs.size[/boot,pfree]', u'bono_vfs.fs.size[/boot,total]', u'bono_vfs.fs.size[/boot,used]', u'bono_vfs.fs.size[/var/lib/docker/aufs,pfree]', u'bono_vfs.fs.size[/var/lib/docker/aufs,total]', u'bono_vfs.fs.size[/var/lib/docker/aufs,used]', u'bono_vfs.fs.size[/var/lib/kubelet,free]', u'bono_vfs.fs.size[/var/lib/kubelet,pfree]', u'bono_vfs.fs.size[/var/lib/kubelet,total]', u'bono_vfs.fs.size[/var/lib/kubelet,used]', u'bono_vfs.fs.size[/var/lib/rancher/volumes,free]', u'bono_vfs.fs.size[/var/lib/rancher/volumes,pfree]', u'bono_vfs.fs.size[/var/lib/rancher/volumes,total]',u'bono_vfs.fs.size[/var/lib/rancher/volumes,used]', u'bono_vm.memory.size[available]', u'bono_vm.memory.size[total]', u'homestead_net.if.in[ens160]', u'homestead_net.if.out[ens160]', u'homestead_proc.num[,,run]', u'homestead_proc.num[]', u'homestead_system.cpu.intr', u'homestead_system.cpu.load[percpu,avg1]', u'homestead_system.cpu.load[percpu,avg15]', u'homestead_system.cpu.load[percpu,avg5]', u'homestead_system.cpu.switches', u'homestead_system.cpu.util[,idle]', u'homestead_system.cpu.util[,interrupt]', u'homestead_system.cpu.util[,iowait]', u'homestead_system.cpu.util[,nice]', u'homestead_system.cpu.util[,softirq]', u'homestead_system.cpu.util[,steal]', u'homestead_system.cpu.util[,system]', u'homestead_system.cpu.util[,user]', u'homestead_system.swap.size[,free]', u'homestead_system.swap.size[,pfree]', u'homestead_system.swap.size[,total]', u'homestead_vfs.fs.inode[/,pfree]', u'homestead_vfs.fs.inode[/boot,pfree]', u'homestead_vfs.fs.inode[/var/lib/docker/aufs,pfree]', u'homestead_vfs.fs.inode[/var/lib/kubelet,pfree]', u'homestead_vfs.fs.inode[/var/lib/rancher/volumes,pfree]', u'homestead_vfs.fs.size[/,pfree]', u'homestead_vfs.fs.size[/,total]', u'homestead_vfs.fs.size[/,used]', u'homestead_vfs.fs.size[/boot,free]', u'homestead_vfs.fs.size[/boot,pfree]', u'homestead_vfs.fs.size[/boot,total]', u'homestead_vfs.fs.size[/boot,used]', u'homestead_vfs.fs.size[/var/lib/docker/aufs,pfree]', u'homestead_vfs.fs.size[/var/lib/docker/aufs,total]', u'homestead_vfs.fs.size[/var/lib/docker/aufs,used]', u'homestead_vfs.fs.size[/var/lib/kubelet,free]', u'homestead_vfs.fs.size[/var/lib/kubelet,pfree]', u'homestead_vfs.fs.size[/var/lib/kubelet,total]', u'homestead_vfs.fs.size[/var/lib/kubelet,used]', u'homestead_vfs.fs.size[/var/lib/rancher/volumes,free]', u'homestead_vfs.fs.size[/var/lib/rancher/volumes,pfree]', u'homestead_vfs.fs.size[/var/lib/rancher/volumes,total]', u'homestead_vfs.fs.size[/var/lib/rancher/volumes,used]', u'homestead_vm.memory.size[available]', u'homestead_vm.memory.size[total]', u'sprout_net.if.in[ens160]', u'sprout_net.if.out[ens160]', u'sprout_proc.num[,,run]', u'sprout_proc.num[]', u'sprout_system.cpu.intr', u'sprout_system.cpu.load[percpu,avg1]', u'sprout_system.cpu.load[percpu,avg15]', u'sprout_system.cpu.load[percpu,avg5]', u'sprout_system.cpu.switches', u'sprout_system.cpu.util[,idle]', u'sprout_system.cpu.util[,interrupt]', u'sprout_system.cpu.util[,iowait]', u'sprout_system.cpu.util[,nice]', u'sprout_system.cpu.util[,softirq]', u'sprout_system.cpu.util[,steal]', u'sprout_system.cpu.util[,system]', u'sprout_system.cpu.util[,user]', u'sprout_system.swap.size[,free]', u'sprout_system.swap.size[,pfree]', u'sprout_system.swap.size[,total]', u'sprout_vfs.fs.inode[/,pfree]', u'sprout_vfs.fs.inode[/boot,pfree]', u'sprout_vfs.fs.inode[/var/lib/docker/aufs,pfree]', u'sprout_vfs.fs.inode[/var/lib/kubelet,pfree]', u'sprout_vfs.fs.inode[/var/lib/rancher/volumes,pfree]', u'sprout_vfs.fs.size[/,pfree]', u'sprout_vfs.fs.size[/,total]', u'sprout_vfs.fs.size[/,used]', u'sprout_vfs.fs.size[/boot,free]', u'sprout_vfs.fs.size[/boot,pfree]', u'sprout_vfs.fs.size[/boot,total]', u'sprout_vfs.fs.size[/boot,used]', u'sprout_vfs.fs.size[/var/lib/docker/aufs,pfree]', u'sprout_vfs.fs.size[/var/lib/docker/aufs,total]', u'sprout_vfs.fs.size[/var/lib/docker/aufs,used]', u'sprout_vfs.fs.size[/var/lib/kubelet,free]', u'sprout_vfs.fs.size[/var/lib/kubelet,pfree]', u'sprout_vfs.fs.size[/var/lib/kubelet,total]', u'sprout_vfs.fs.size[/var/lib/kubelet,used]', u'sprout_vfs.fs.size[/var/lib/rancher/volumes,free]', u'sprout_vfs.fs.size[/var/lib/rancher/volumes,pfree]', u'sprout_vfs.fs.size[/var/lib/rancher/volumes,total]', u'sprout_vfs.fs.size[/var/lib/rancher/volumes,used]', u'sprout_vm.memory.size[available]', u'sprout_vm.memory.size[total]']
+const_fault_label = ['bono_normal', 'bono_cpu', 'bono_mem', 'bono_io', 'homestead_normal', 'homestead_cpu', 'homestead_mem', 'homestead_io', 'sprout_normal', 'sprout_cpu', 'sprout_mem', 'sprout_io']
 
 # path
 data_dir = './data'
@@ -95,9 +96,11 @@ def match_rule(record, rule):
 
 
 def auto_label_faultload():
+    bono_csv = []
+    homestead_csv = []
+    sprout_csv = []
     for component in ['bono', 'homestead', 'sprout']:
-        data = [record for record in read_xlsx(
-            '%s/faultload/%s-data.xlsx' % (raw_data_dir, component))]
+        data = [record for record in read_xlsx('%s/faultload/%s-data.xlsx' % (raw_data_dir, component))]
         rule = read_log('%s/faultload/%s-stress.log' % (raw_data_dir, component))
 
         data_label = [match_rule(record[1:], rule) for record in data]
@@ -105,7 +108,29 @@ def auto_label_faultload():
         label_list = ['normal', 'cpu', 'mem', 'io']
         sum_com_data = [const_items[1:] + label_list]
         sum_com_data += data_label
+
+        if component == 'bono':
+            bono_csv = sum_com_data
+        elif component == 'homestead':
+            homestead_csv = sum_com_data
+        elif component == 'sprout':
+            sprout_csv = sum_com_data
+
         write_to_csv('%s/faultload-%s.csv' % (data_dir, component), sum_com_data)
+
+    # combine csv
+    combine_csv = []
+    combine_csv.append(const_imtes_combine + const_fault_label)
+
+    i = 0
+    for bono_r, homestead_r, sprout_r in zip(bono_csv, homestead_csv, sprout_csv):
+        i += 1
+        combine_r = bono_r[:-4] + homestead_r[1:-4] + sprout_r[1:-4] + bono_r[-4:] + homestead_r[-4:] + sprout_r[-4:]
+        if 1 == i:
+            continue
+        combine_csv.append(combine_r)
+    write_to_csv('%s/faultload.csv' % (data_dir), combine_csv)
+
 
 def read_sla(sla_file):
     info_list = []
