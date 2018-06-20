@@ -155,11 +155,11 @@ def transfer_sl(key):
     if None == key:
         return ['-1', 'no match']
     elif key > 0.9:
-        return ['2', 1-key]
+        return ['2', '%0.2f%%' % ((1-key)*100)]
     elif key > 0.5:
-        return ['1', 1-key]
+        return ['1', '%0.2f%%' % ((1-key)*100)]
     else:
-        return ['0', 1-key]
+        return ['0', '%0.2f%%' % ((1-key)*100)]
 
 def match_sla(record, sla_list):
     find = False
@@ -173,9 +173,6 @@ def match_sla(record, sla_list):
     return record
 
 def auto_label_sla():
-    label = ['sla level', 'successful rate']
-    sum_com_data = [const_imtes_combine + label]
-
     com_data = combine_data('%s/sla/bono.xlsx' % raw_data_dir, 
         '%s/sla/homestead.xlsx' % raw_data_dir,
         '%s/sla/sprout.xlsx' % raw_data_dir)
@@ -183,18 +180,27 @@ def auto_label_sla():
 
     com_data_label = [match_sla(record, sla_list) for record in com_data]
 
-    label = ['sla level']
+    label = ['sla level', 'successful rate']
     sum_com_data = [const_imtes_combine + label]
     sum_com_data += com_data_label
     write_to_csv('%s/sla-level.csv' % data_dir, sum_com_data)
 
 
 def main():
-    auto_label_workload()
-    auto_label_faultload()
-    auto_label_sla()
-    pass
+    try :
+        auto_label_workload()
+    except:
+        print 'no label workload'
 
+    try:
+        auto_label_faultload()
+    except:
+        print 'no label faultload'
     
+    try:
+        auto_label_sla()
+    except:
+        print 'no label sla'
+   
 if __name__ == '__main__':
     main()
