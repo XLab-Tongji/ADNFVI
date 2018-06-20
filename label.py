@@ -153,13 +153,13 @@ def read_sla(sla_file):
 
 def transfer_sl(key):
     if None == key:
-        return ['2']
+        return ['-1', 'no match']
     elif key > 0.9:
-        return ['2']
+        return ['2', 1-key]
     elif key > 0.5:
-        return ['1']
+        return ['1', 1-key]
     else:
-        return ['0']
+        return ['0', 1-key]
 
 def match_sla(record, sla_list):
     find = False
@@ -173,7 +173,7 @@ def match_sla(record, sla_list):
     return record
 
 def auto_label_sla():
-    label = ['sla level']
+    label = ['sla level', 'successful rate']
     sum_com_data = [const_imtes_combine + label]
 
     com_data = combine_data('%s/sla/bono.xlsx' % raw_data_dir, 
